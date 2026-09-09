@@ -58,11 +58,11 @@ def main() -> None:
         require(engine, phrase, "version-answer-engine.md")
 
     for phrase in [
-        "人物内核",
+        "六个人物心智模型",
         "AI 模块",
         "版本答案引擎",
         "幽默 UI",
-        "幽默是 UI，不是邵艾伦的人格证据",
+        "项目是否好笑由下面的幽默 UI 决定",
     ]:
         require(skill, phrase, "SKILL.md")
 
@@ -70,7 +70,7 @@ def main() -> None:
         raise SystemExit("FAIL: README should expose at least five badges")
     if not readme.startswith('<div align="center">'):
         raise SystemExit("FAIL: README hero is not centered")
-    for icon in ["💪", "⚖️", "🧭", "🔬", "🤖", "⚙️", "🎬", "🧠", "🎭", "🛡️", "📦", "🧪", "🔎"]:
+    for icon in ["💪", "🧬", "🩻", "🧭", "⚙️", "🎮", "🎬", "🤖", "🧠", "🎭", "🛡️", "📦", "🧪", "🔎"]:
         require(readme, icon, "README.md")
 
     old_paths = re.findall(r"shao-alan-operating-system/(?:SKILL|references|scripts|tests)", readme)

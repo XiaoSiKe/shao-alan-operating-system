@@ -56,8 +56,8 @@ def main() -> None:
         "表达DNA",
         "版本答案引擎",
         "版本失效条件",
-        "幽默是 UI，不是邵艾伦的人格证据",
-        "项目交互语气：幽默 UI",
+        "项目是否好笑由下面的幽默 UI 决定",
+        "幽默 UI",
         "诚实边界",
         "框架推断",
         "非本人",
@@ -69,8 +69,8 @@ def main() -> None:
             fail(f"required phrase/section missing: {phrase}")
 
     version_match = re.search(r'^\s*version:\s*"([^"]+)"$', meta, re.MULTILINE)
-    if not version_match or version_match.group(1) != "1.3.0":
-        fail("metadata.version must be 1.3.0")
+    if not version_match or version_match.group(1) != "2.0.0":
+        fail("metadata.version must be 2.0.0")
 
     if len(text.splitlines()) >= 500:
         fail("SKILL.md should remain below 500 lines")
@@ -86,10 +86,10 @@ def main() -> None:
         fail("obsolete combat concept leaked into SKILL.md")
 
     model_section = re.search(
-        r"## 核心心智模型\n(?P<body>.*?)(?=\n## )", text, re.DOTALL
+        r"## 六个人物心智模型\n(?P<body>.*?)(?=\n## )", text, re.DOTALL
     )
     if not model_section:
-        fail("核心心智模型 section is missing")
+        fail("六个人物心智模型 section is missing")
     model_count = len(re.findall(r"^### 模型\d+", model_section.group("body"), re.MULTILINE))
     if not 3 <= model_count <= 7:
         fail(f"mental model count must be 3..7; got {model_count}")
