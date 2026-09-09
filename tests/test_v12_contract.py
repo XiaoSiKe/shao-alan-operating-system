@@ -70,7 +70,7 @@ def main() -> None:
         raise SystemExit("FAIL: README should expose at least five badges")
     if not readme.startswith('<div align="center">'):
         raise SystemExit("FAIL: README hero is not centered")
-    for icon in ["⚡", "🧩", "🧠", "🤖", "🎬", "🎭", "🛡️", "📦", "🧪", "🔎"]:
+    for icon in ["💪", "⚖️", "🧭", "🔬", "🤖", "⚙️", "🎬", "🧠", "🎭", "🛡️", "📦", "🧪", "🔎"]:
         require(readme, icon, "README.md")
 
     old_paths = re.findall(r"shao-alan-operating-system/(?:SKILL|references|scripts|tests)", readme)

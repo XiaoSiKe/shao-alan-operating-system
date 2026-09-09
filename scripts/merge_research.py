@@ -24,6 +24,10 @@ AGENTS = {
     '04-external-views': '他者',
     '05-decisions': '决策',
     '06-timeline': '时间线',
+    '07-ai-era-references': 'AI参考',
+    '08-thin-muscle-primary-update': '薄肌一手增量',
+    '09-thin-muscle-debate-update': '薄肌外部增量',
+    '10-thin-muscle-evidence': '薄肌科学边界',
 }
 
 

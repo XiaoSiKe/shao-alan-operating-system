@@ -69,8 +69,8 @@ def main() -> None:
             fail(f"required phrase/section missing: {phrase}")
 
     version_match = re.search(r'^\s*version:\s*"([^"]+)"$', meta, re.MULTILINE)
-    if not version_match or version_match.group(1) != "1.2.0":
-        fail("metadata.version must be 1.2.0")
+    if not version_match or version_match.group(1) != "1.3.0":
+        fail("metadata.version must be 1.3.0")
 
     if len(text.splitlines()) >= 500:
         fail("SKILL.md should remain below 500 lines")
