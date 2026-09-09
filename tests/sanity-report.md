@@ -1,6 +1,6 @@
 # 已知立场一致性 Sanity Report
 
-- 测试对象：`shao-alan-operating-system/SKILL.md`
+- 测试对象：`SKILL.md`（v1.2 已拍平到仓库根目录）
 - 测试范围：`tests/PROMPTS.md` 中前 3 道「已知立场测试」
 - 对照证据：`references/research/01-writings.md`、`references/research/02-conversations.md`
 - 测试日期：2026-09-09（Asia/Shanghai）

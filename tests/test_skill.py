@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SKILL = ROOT / "SKILL.md"
 RESEARCH = ROOT / "references" / "research"
+EXPECTED_NAME = "shao-alan-operating-system"
 
 
 def fail(message: str) -> None:
@@ -33,8 +34,8 @@ def main() -> None:
         fail("frontmatter.name is missing")
 
     name = name_match.group(1).strip()
-    if name != ROOT.name:
-        fail(f"name {name!r} must match directory {ROOT.name!r}")
+    if name != EXPECTED_NAME:
+        fail(f"name {name!r} must be {EXPECTED_NAME!r}")
     if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name):
         fail("name must contain lowercase letters, digits, and single hyphens only")
 
@@ -50,9 +51,13 @@ def main() -> None:
         fail(f"description length must be 1..1024 characters; got {len(description)}")
 
     required_phrases = [
-        "版本答案",
+        "薄肌是身体版本答案，AI 是时代版本答案。",
         "AI 薄肌版",
         "表达DNA",
+        "版本答案引擎",
+        "版本失效条件",
+        "幽默是 UI，不是邵艾伦的人格证据",
+        "项目交互语气：幽默 UI",
         "诚实边界",
         "框架推断",
         "非本人",
@@ -62,6 +67,20 @@ def main() -> None:
     for phrase in required_phrases:
         if phrase not in text:
             fail(f"required phrase/section missing: {phrase}")
+
+    version_match = re.search(r'^\s*version:\s*"([^"]+)"$', meta, re.MULTILINE)
+    if not version_match or version_match.group(1) != "1.2.0":
+        fail("metadata.version must be 1.2.0")
+
+    if len(text.splitlines()) >= 500:
+        fail("SKILL.md should remain below 500 lines")
+
+    if (ROOT / EXPECTED_NAME).exists():
+        fail("legacy nested skill directory still exists")
+
+    engine = ROOT / "references" / "version-answer-engine.md"
+    if not engine.exists() or engine.stat().st_size < 1000:
+        fail("version answer engine is missing or too small")
 
     if "搏击" in text:
         fail("obsolete combat concept leaked into SKILL.md")
