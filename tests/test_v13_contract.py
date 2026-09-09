@@ -42,10 +42,9 @@ def main() -> None:
     theory = THEORY.read_text(encoding="utf-8")
 
     for phrase in [
-        "本人主张",
-        "支持者的最强观点",
-        "批评者的最强观点",
-        "薄肌理论修正版",
+        "身体原型",
+        "最小充分能力",
+        "健康与功能底线",
         "不能声称",
         "回答协议",
         "薄肌不是独立的生理学分类",
@@ -53,7 +52,7 @@ def main() -> None:
         require(theory, phrase, "thin-muscle-theory.md")
 
     require(skill, "references/thin-muscle-theory.md", "SKILL.md")
-    require(skill, "薄肌争议校准器", "SKILL.md")
+    require(skill, "薄肌系统校准器", "SKILL.md")
     require(engine, "thin-muscle-theory.md", "version-answer-engine.md")
 
     ai_position = readme.find("## 🤖")
@@ -77,10 +76,9 @@ def main() -> None:
 
     for phrase in [
         "### 归属闸门",
-        "🟠 外部观点",
-        "⚪ 科学校准",
-        "项目原创工作定义（不是邵艾伦本人原话）",
-        "短答无法展开各层时",
+        "⚪ 校准依据",
+        "🟣 项目理论",
+        "短答无法展开时",
         "健康与安全硬闸门",
     ]:
         require(skill, phrase, "SKILL.md")
@@ -95,8 +93,11 @@ def main() -> None:
             raise SystemExit(f"FAIL: incremental research missing: {path.name}")
 
     version = re.search(r'^\s*version:\s*"([^"]+)"$', skill, re.MULTILINE)
-    if not version or version.group(1) != "1.3.0":
-        raise SystemExit("FAIL: metadata.version must be 1.3.0")
+    if not version:
+        raise SystemExit("FAIL: metadata.version is missing")
+    version_tuple = tuple(int(part) for part in version.group(1).split("."))
+    if version_tuple < (1, 3, 0):
+        raise SystemExit("FAIL: v1.3 research lineage must remain supported")
 
     print("PASS: v1.3 thin-muscle-centered contract")
 

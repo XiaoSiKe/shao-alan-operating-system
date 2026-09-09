@@ -41,6 +41,7 @@ def main() -> None:
     run(sys.executable, "tests/test_skill.py")
     run(sys.executable, "tests/test_v12_contract.py")
     run(sys.executable, "tests/test_v13_contract.py")
+    run(sys.executable, "tests/test_v20_contract.py")
     run(sys.executable, "scripts/quality_check.py", "SKILL.md")
     run(sys.executable, "-m", "py_compile", *map(str, sorted((ROOT / "scripts").glob("*.py"))))
     run("bash", "-n", "scripts/download_subtitles.sh")
